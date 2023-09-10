@@ -7,7 +7,7 @@ mpDraw = mp.solutions.drawing_utils
 mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 size = 10
-array = np.zeros((size, 32, 3))
+array = np.zeros((size, 33, 3))
 cap = cv2.VideoCapture('track_runner.mp4')
 arrayIndex = 0
 pTime = 0
@@ -23,9 +23,8 @@ while True:
         mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
         for id, lm in enumerate(results.pose_landmarks.landmark):
             h, w, c = img.shape
-            #print(id, lm)
             cx, cy = int(lm.x * w), int(lm.y * h)
-            array[arrayIndex, id] = {cx, cy, lm.z}
+            array[arrayIndex, id] = [cx, cy, lm.z]
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
