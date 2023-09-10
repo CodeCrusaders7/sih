@@ -3,6 +3,24 @@ import mediapipe as mp
 import time
 import numpy as np
 
+def isCrawl(array) :
+    return True
+
+def isJump(array) :
+    return True
+
+def isRun(array) :
+    return True
+def classifyAction(array) :
+    if isCrawl(array) :
+        return "Crawl"
+    if isJump(array) :
+        return "Jump"
+    if isRun(array) :
+        return "Run"
+    return "still"
+
+
 mpDraw = mp.solutions.drawing_utils
 mpPose = mp.solutions.pose
 pose = mpPose.Pose()
@@ -26,6 +44,9 @@ while True:
             cx, cy = int(lm.x * w), int(lm.y * h)
             array[arrayIndex, id] = [cx, cy, lm.z]
 
+    action = classifyAction(array)
+    cv2.putText(img, action, (70, 50), cv2.FONT_HERSHEY_PLAIN, 3,
+                (255, 0, 0), 3)
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
