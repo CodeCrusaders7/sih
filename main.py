@@ -55,8 +55,7 @@ while True:
             action = "Jumping"
             shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
 
-        elif shoulderLevel - jumpThreshold < (
-                array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
+        elif shoulderLevel - jumpThreshold < (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
             print((array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 - shoulderLevel)
             shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
             action = "Walking"
@@ -64,6 +63,9 @@ while True:
         else:
             shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
             action = "Walkkuhuuhing"
+
+    # Jumping logic : keep track of minimum shoulder level (y coordinate) then if current shoulder level is more than
+    # min shoulder level by jumpThreshold the assign action to jumping 
 
     # else:
     #     action = classifyAction(array, miniY)
