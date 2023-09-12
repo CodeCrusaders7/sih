@@ -48,19 +48,22 @@ while True:
         shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
         t = t + 1
         action = "start"
+    if #your logic for crawling ie collinear about y axis:
 
-    elif -(array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 + shoulderLevel > jumpThreshold:
-        action = "Jumping"
-        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+    else :
+        if -(array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 + shoulderLevel > jumpThreshold:
+            action = "Jumping"
+            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
 
-    elif shoulderLevel - jumpThreshold < (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
-        print((array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 - shoulderLevel)
-        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
-        action = "Walking"
+        elif shoulderLevel - jumpThreshold < (
+                array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
+            print((array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 - shoulderLevel)
+            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+            action = "Walking"
 
-    else:
-        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
-        action = "Walkkuhuuhing"
+        else:
+            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+            action = "Walkkuhuuhing"
 
     # else:
     #     action = classifyAction(array, miniY)
