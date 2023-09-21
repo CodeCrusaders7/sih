@@ -20,7 +20,7 @@ mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 size = 10
 array = np.zeros((size, 33, 3))
-cap = cv2.VideoCapture('istockphoto-1497927703-640_adpp_is.mp4')
+cap = cv2.VideoCapture(0)
 arrayIndex = 0
 pTime = 0
 miniY = 0
@@ -48,24 +48,26 @@ while True:
         shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
         t = t + 1
         action = "start"
-    if #your logic for crawling ie collinear about y axis:
 
-    else :
-        if -(array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 + shoulderLevel > jumpThreshold:
-            action = "Jumping"
-            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+    if -(array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 + shoulderLevel > jumpThreshold:
+        action = "Jumping"
+        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
 
-        elif shoulderLevel - jumpThreshold < (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
-            print((array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 - shoulderLevel)
-            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
-            action = "Walking"
+    elif shoulderLevel - jumpThreshold < (
+            array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2 < shoulderLevel + jumpThreshold:
+        # print((array[arrayIndex, 12, 1] + array[arrayIndex, 11, 1]) / 2 - shoulderLevel)
+        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+        action = "Walking"
 
-        else:
-            shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
-            action = "Walkkuhuuhing"
+    else:
+        shoulderLevel = (array[arrayIndex, 11, 1] + array[arrayIndex, 12, 1]) / 2
+        action = "Walkkuhuuhing"
+    pixel = array[arrayIndex, 24, 1] + array[arrayIndex, 23, 1] - array[arrayIndex, 12, 1] - array[arrayIndex, 11, 1]
+    pixel = pixel / 2
+    print(340.73 * 95 / pixel)
 
     # Jumping logic : keep track of minimum shoulder level (y coordinate) then if current shoulder level is more than
-    # min shoulder level by jumpThreshold the assign action to jumping 
+    # min shoulder level by jumpThreshold the assign action to jumping
 
     # else:
     #     action = classifyAction(array, miniY)
