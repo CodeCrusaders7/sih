@@ -19,7 +19,6 @@ for subfolder_name in range(20):
             # Check if the .npy file exists
             if not (os.path.exists(npy_file_path) and os.path.isfile(npy_file_path)):
                 flag = 1
-
                 break
             i = i + 1
         if flag == 1:

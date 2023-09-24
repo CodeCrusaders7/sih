@@ -8,7 +8,7 @@ mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture("video6089117973266566521.mp4")
+cap = cv2.VideoCapture(0)
  # Use a list to store landmark values
 fileIndex = 0
 subFolderIndex = 9
@@ -70,3 +70,4 @@ while True:
 
 cv2.destroyAllWindows()
 cap.release()
+print(array.shape)
