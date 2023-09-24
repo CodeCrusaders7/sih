@@ -8,12 +8,12 @@ mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture("still")
+cap = cv2.VideoCapture("video6089117973266566521.mp4")
  # Use a list to store landmark values
 fileIndex = 0
-subFolderIndex = 0
+subFolderIndex = 9
 flag = 0
-folder_path = "Trainingdata/Still"
+folder_path = "Trainingdata/Walking"
 folder_name = str(subFolderIndex)  # Initialize folder_name
 position = (50, 50)  # (x, y) coordinates
 
@@ -39,7 +39,7 @@ while True:
             #improved
             landmark_values.extend([lm.x, lm.y, lm.z, lm.visibility])
         landmark_list.append(landmark_values)
-    #array = np.array(landmark_list).flatten()
+    array = np.array(landmark_list).flatten()
     if flag == 1:
         # Save the list of landmark values as a numpy array
         array = np.array(landmark_list).flatten()
@@ -57,7 +57,7 @@ while True:
         folder_name = str(subFolderIndex)  # Update folder_name
         subFolderIndex += 1
 
-        folder_path = "Trainingdata/Still"  # Update folder_path
+        folder_path = "Trainingdata/Walking"  # Update folder_path
         if not os.path.exists(os.path.join(folder_path, folder_name)):
             os.makedirs(os.path.join(folder_path, folder_name))
         print(subFolderIndex)
